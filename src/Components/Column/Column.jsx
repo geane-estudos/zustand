@@ -2,10 +2,12 @@ import React from "react";
 import "./Column.css";
 import Task from "../Task/Task";
 import { useStore } from "../../../store";
+import classNames from "classnames";
 
 const Column = ({ state }) => {
   const [text, setText] = React.useState("");
   const [open, setOpen] = React.useState("");
+  const [drop, setDrop] = React.useState(false);
 
   const tasks = useStore((store) =>
     store.tasks.filter((task) => task.state === state)
@@ -21,11 +23,17 @@ const Column = ({ state }) => {
 
   return (
     <div
-      className="column"
+      className={classNames('column', { drop: drop})}
       onDragOver={(e) => {
+        setDrop(true);
         e.preventDefault();
       }}
+      onDragLeave={(e) => {
+        setDrop(false);
+        e.preventDefault()
+      }}
       onDrop={(e) => {
+        setDrop(false);
         moveTask(draggedTask,state);
         setDraggedTask(null);}}
     >
