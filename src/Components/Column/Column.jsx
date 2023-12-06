@@ -10,9 +10,23 @@ const Column = ({ state }) => {
   const tasks = useStore((store) =>
     store.tasks.filter((task) => task.state === state)
   );
+
   const addTask = useStore((store) => store.addTask);
+
+  const setDraggedTask = useStore((store) => store.setDraggedTask)
+
+  const draggedTask = useStore((store) => store.draggedTask)
+
   return (
-    <div className="column">
+    <div
+      className="column"
+      onDragOver={(e) => {
+        e.preventDefault();
+      }}
+      onDrop={(e) => {
+        console.log(draggedTask);
+        setDraggedTask(null);}}
+    >
       <div className="titleWrapper">
         <p>{state}</p>
         <button onClick={() => setOpen(true)}>Add</button>
