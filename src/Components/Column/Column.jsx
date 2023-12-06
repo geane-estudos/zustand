@@ -17,6 +17,8 @@ const Column = ({ state }) => {
 
   const draggedTask = useStore((store) => store.draggedTask)
 
+  const moveTask = useStore((store) => store.moveTask)
+
   return (
     <div
       className="column"
@@ -24,7 +26,7 @@ const Column = ({ state }) => {
         e.preventDefault();
       }}
       onDrop={(e) => {
-        console.log(draggedTask);
+        moveTask(draggedTask,state);
         setDraggedTask(null);}}
     >
       <div className="titleWrapper">
