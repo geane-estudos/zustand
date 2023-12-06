@@ -1,15 +1,14 @@
-import './App.css'
-import Column from './Components/Column/Column'
+import "./App.css";
+import Column from "./Components/Column/Column";
 
 function App() {
-
   return (
-    <div className='App'>
-    <Column state="PLANNED"/>
-    <Column state="ONGOING"/>
-    <Column state="DONE"/>
+    <div className="App">
+      <Column state="PLANNED" />
+      <Column state="ONGOING" />
+      <Column state="DONE" />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
