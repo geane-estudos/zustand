@@ -3,6 +3,7 @@ import "./Column.css";
 import Task from "../Task/Task";
 import { useStore } from "../../../store";
 import classNames from "classnames";
+import PropTypes from "prop-types"; 
 
 const Column = ({ state }) => {
   const [text, setText] = React.useState("");
@@ -35,7 +36,9 @@ const Column = ({ state }) => {
       onDrop={(e) => {
         setDrop(false);
         moveTask(draggedTask,state);
-        setDraggedTask(null);}}
+        setDraggedTask(null);
+        e.preventDefault();
+      }}
     >
       <div className="titleWrapper">
         <p>{state}</p>
@@ -62,6 +65,10 @@ const Column = ({ state }) => {
       )}
     </div>
   );
+};
+
+Column.propTypes = {
+  state: PropTypes.string.isRequired,
 };
 
 export default Column;

@@ -1,8 +1,8 @@
-import React from "react";
 import "./Task.css";
 import classNames from "classnames";
 import { useStore } from "../../../store";
 import trash from "../../assets/trash.svg"
+import PropTypes from "prop-types";
 
 const Task = ({ title }) => {
 
@@ -23,6 +23,10 @@ const Task = ({ title }) => {
       </div>
     </div>
   );
+};
+
+Task.propTypes = {
+  title: PropTypes.string.isRequired, 
 };
 
 export default Task;

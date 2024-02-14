@@ -6,7 +6,7 @@ const store = (set) => ({
   draggedTask: null,
 
   addTask: (title, state) =>
-    set((store) => ({ tasks: [...store.tasks, { title, state }] }), false, "addTask"), //adding a new element
+    set((store) => ({ tasks: [...store.tasks, { title, state }] }), false, "addTask"),
 
   deleteTask: (title) =>
     set((store) => ({
@@ -24,3 +24,4 @@ const store = (set) => ({
 });
 
 export const useStore = create(persist(devtools(store), {name:"store"}));
+// export const useStore = create(store);
